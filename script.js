@@ -15,3 +15,21 @@ function getComputerChoice() {
             break;
     }
 }
+
+function getHumanChoice() {
+    let choice = prompt("Enter a choice: rock, paper or scissors","");
+
+    if(choice === null) return "canceled"
+
+    choice = choice.toLowerCase();
+
+    if(choice === "rock" ||
+        choice === "paper" ||
+        choice === "scissors") {
+        return choice;
+    }
+
+    else {
+        return "wrong choice";
+    }
+}
