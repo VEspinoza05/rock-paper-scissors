@@ -1,3 +1,7 @@
+//Global variables
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     const minNumber = 1;
     const maxNumber = 3;
