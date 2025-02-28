@@ -37,3 +37,43 @@ function getHumanChoice() {
         return "wrong choice";
     }
 }
+
+function playRound(humanChoice, computerChoice){
+    let losingPlayer;
+    let roundResult;
+
+    if((humanChoice === "rock" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "rock")) {
+
+        roundResult = "Paper beats Rock";
+        
+        if(humanChoice === "paper") losingPlayer = "Computer";
+        else losingPlayer = "You";
+    }
+    else if((humanChoice === "paper" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "paper")) {
+
+            roundResult = "Scissors beats Paper"
+
+            if(humanChoice === "scissors") losingPlayer = "Computer";
+            else losingPlayer = "You";
+        }
+    else if((humanChoice === "scissors" && computerChoice === "rock") ||
+        (humanChoice === "rock" && computerChoice === "scissors")) {
+
+            roundResult = "Rock beats Scissors"
+
+            if(humanChoice === "rock") losingPlayer = "Computer";
+            else losingPlayer = "You"
+    }
+    else {
+        console.log("It's a draw. There's no winner.");
+        return;
+    }
+    
+
+    if(losingPlayer === "You") computerScore++;
+    else humanScore++; 
+
+    console.log(`${losingPlayer} lose! ${roundResult}`);
+}
