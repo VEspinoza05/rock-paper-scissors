@@ -1,11 +1,37 @@
 //Global variables
 let humanScore = 0;
 let computerScore = 0;
+let rounds = 0;
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+while(rounds !== 5) {
+    option = playGame();
+    
+    if(option === "canceled") break;
+    else if(option === "wrong choice") continue;
 
-playRound(humanSelection, computerSelection)
+    rounds++;
+}
+
+anounceWinners();
+
+//functions
+function anounceWinners() {
+    console.log(`Human score: ${humanScore} \nComputer Score : ${computerScore}`);
+        
+    if(humanScore > computerScore) console.log("Winner is Human!");
+    else if (computerScore > humanScore) console.log("Winner is Computer!");
+    else console.log("It's a draw.");
+}
+
+function playGame(){
+    const humanSelection = getHumanChoice();
+
+    if(humanSelection === "canceled" || 
+        humanSelection === "wrong choice") return humanSelection;
+
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+}
 
 function getComputerChoice() {
     const minNumber = 1;
@@ -72,7 +98,7 @@ function playRound(humanChoice, computerChoice){
             else losingPlayer = "You"
     }
     else {
-        console.log("It's a draw. There's no winner.");
+        console.log("It's a draw");
         return;
     }
     
