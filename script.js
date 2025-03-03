@@ -2,17 +2,21 @@
 let humanScore = 0;
 let computerScore = 0;
 let rounds = 0;
+let continueGame = true;
 
 while(rounds !== 5) {
     option = playGame();
     
-    if(option === "canceled") break;
+    if(option === "canceled") {
+        continueGame = false;
+        break;
+    }
     else if(option === "wrong choice") continue;
 
     rounds++;
 }
 
-anounceWinners();
+if (continueGame) anounceWinners();
 
 //functions
 function anounceWinners() {
