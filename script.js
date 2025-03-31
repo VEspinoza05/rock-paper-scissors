@@ -2,21 +2,7 @@
 let humanScore = 0;
 let computerScore = 0;
 let rounds = 0;
-let continueGame = true;
 
-while(rounds !== 5) {
-    option = playGame();
-    
-    if(option === "canceled") {
-        continueGame = false;
-        break;
-    }
-    else if(option === "wrong choice") continue;
-
-    rounds++;
-}
-
-if (continueGame) anounceWinners();
 
 //functions
 function anounceWinners() {
@@ -112,3 +98,14 @@ function playRound(humanChoice, computerChoice){
 
     console.log(`${losingPlayer} lose! ${roundResult}`);
 }
+
+//Event
+const choices = document.querySelectorAll(".choice");
+
+choices.forEach((c) => 
+    c.addEventListener("click", () => {
+        computerChoice = getComputerChoice();
+        humanChoice = c.textContent.toLowerCase();
+        playRound(humanChoice, computerChoice);
+    })
+)
