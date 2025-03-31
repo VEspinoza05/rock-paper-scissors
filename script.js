@@ -1,7 +1,7 @@
 //Global variables
 let humanScore = 0;
 let computerScore = 0;
-let rounds = 0;
+let roundCount = 0;
 
 
 //functions
@@ -103,6 +103,11 @@ function displayRoundInfo(roundResult) {
     roundInfoElement.textContent = roundResult;
 }
 
+function displayRoundCount(roundCount) {
+    const roundCountElement = document.querySelector(".round-num");
+    roundCountElement.textContent = "Round " + roundCount;
+}
+
 //Event
 const choices = document.querySelectorAll(".choice");
 
@@ -112,5 +117,6 @@ choices.forEach((c) =>
         humanChoice = c.textContent.toLowerCase();
         roundResult = playRound(humanChoice, computerChoice);
         displayRoundInfo(roundResult);
+        displayRoundCount(++roundCount);
     })
 )
