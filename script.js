@@ -88,15 +88,19 @@ function playRound(humanChoice, computerChoice){
             else losingPlayer = "You"
     }
     else {
-        console.log("It's a draw");
-        return;
+        return "It's a draw";
     }
     
 
     if(losingPlayer === "You") computerScore++;
     else humanScore++; 
 
-    console.log(`${losingPlayer} lose! ${roundResult}`);
+    return `${losingPlayer} lose! ${roundResult}`;
+}
+
+function displayRoundInfo(roundResult) {
+    const roundInfoElement = document.querySelector(".round-info");
+    roundInfoElement.textContent = roundResult;
 }
 
 //Event
@@ -106,6 +110,7 @@ choices.forEach((c) =>
     c.addEventListener("click", () => {
         computerChoice = getComputerChoice();
         humanChoice = c.textContent.toLowerCase();
-        playRound(humanChoice, computerChoice);
+        roundResult = playRound(humanChoice, computerChoice);
+        displayRoundInfo(roundResult);
     })
 )
