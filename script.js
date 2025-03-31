@@ -108,6 +108,14 @@ function displayRoundCount(roundCount) {
     roundCountElement.textContent = "Round " + roundCount;
 }
 
+function displayScores() {
+    const humanScoreElement = document.querySelector(".human-score");
+    const computerScoreElement = document.querySelector(".computer-score");
+
+    humanScoreElement.textContent = "Human: " + humanScore;
+    computerScoreElement.textContent = "Computer: " + computerScore;
+}
+
 //Event
 const choices = document.querySelectorAll(".choice");
 
@@ -118,5 +126,6 @@ choices.forEach((c) =>
         roundResult = playRound(humanChoice, computerChoice);
         displayRoundInfo(roundResult);
         displayRoundCount(++roundCount);
+        displayScores();
     })
 )
