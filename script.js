@@ -5,12 +5,10 @@ let roundCount = 0;
 
 
 //functions
-function anounceWinners() {
-    console.log(`Human score: ${humanScore} \nComputer Score : ${computerScore}`);
-        
-    if(humanScore > computerScore) console.log("Winner is Human!");
-    else if (computerScore > humanScore) console.log("Winner is Computer!");
-    else console.log("It's a draw.");
+function getFinalWinner() { 
+    if(humanScore > computerScore) return "Winner is Human!";
+    else if (computerScore > humanScore) return "Winner is Computer!";
+    else return "It's a draw.";
 }
 
 function playGame(){
@@ -116,6 +114,19 @@ function displayScores() {
     computerScoreElement.textContent = "Computer: " + computerScore;
 }
 
+function createGameOverBanner() {
+    const gameOverBanner = document.createElement("div");
+    gameOverBanner.textContent = "Game Over! " + getFinalWinner();
+    return gameOverBanner;
+}
+
+function displayGameOver() {
+    const gameOverBanner = createGameOverBanner();
+    const resultsContainer = document.querySelector(".results");
+    const gameUiContainer = document.querySelector(".game-ui")
+    gameUiContainer.insertBefore(gameOverBanner, resultsContainer);
+}
+
 //Event
 const choices = document.querySelectorAll(".choice");
 
@@ -129,5 +140,7 @@ choices.forEach((c) =>
         displayRoundInfo(roundResult);
         displayRoundCount(++roundCount);
         displayScores();
+
+        if(roundCount === 5) displayGameOver();
     })
 )
