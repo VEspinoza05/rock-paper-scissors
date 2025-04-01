@@ -116,9 +116,17 @@ function displayScores() {
     computerScoreElement.textContent = "Computer: " + computerScore;
 }
 
+function createResetButton() {
+    const resetButton = document.createElement("button");
+    resetButton.textContent = "Restart"
+    return resetButton;
+}
+
 function createGameOverBanner() {
     const gameOverBanner = document.createElement("div");
     gameOverBanner.textContent = "Game Over! " + getFinalWinner();
+    resetButton = createResetButton();
+    gameOverBanner.appendChild(resetButton);
     return gameOverBanner;
 }
 
