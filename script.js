@@ -3,6 +3,8 @@ let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
+const choicesContainer = document.querySelector(".choices");
+const gameUiH2 = document.querySelector(".game-ui > h2");
 
 //functions
 function getFinalWinner() { 
@@ -141,6 +143,10 @@ choices.forEach((c) =>
         displayRoundCount(++roundCount);
         displayScores();
 
-        if(roundCount === 5) displayGameOver();
+        if(roundCount === 5) {
+            displayGameOver();
+            choicesContainer.remove();
+            gameUiH2.remove();
+        }
     })
 )
