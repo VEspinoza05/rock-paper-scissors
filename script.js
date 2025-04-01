@@ -3,6 +3,7 @@ let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
+const gameUiContainer = document.querySelector(".game-ui");
 const choicesContainer = document.querySelector(".choices");
 const gameUiH2 = document.querySelector(".game-ui > h2");
 
@@ -119,11 +120,13 @@ function displayScores() {
 function createResetButton() {
     const resetButton = document.createElement("button");
     resetButton.textContent = "Restart"
+    resetButton.addEventListener("click", () => resetGame())
     return resetButton;
 }
 
 function createGameOverBanner() {
     const gameOverBanner = document.createElement("div");
+    gameOverBanner.setAttribute("class", "game-over-banner")
     gameOverBanner.textContent = "Game Over! " + getFinalWinner();
     resetButton = createResetButton();
     gameOverBanner.appendChild(resetButton);
@@ -135,6 +138,21 @@ function displayGameOver() {
     const resultsContainer = document.querySelector(".results");
     const gameUiContainer = document.querySelector(".game-ui")
     gameUiContainer.insertBefore(gameOverBanner, resultsContainer);
+}
+
+function resetGame() {
+    computerScore = humanScore = roundCount = 0;
+    setDefaultUi();
+}
+
+function setDefaultUi() {
+    const gameOverBanner = document.querySelector(".game-over-banner");
+    gameUiContainer.insertBefore(gameUiH2, gameOverBanner);
+    gameUiContainer.insertBefore(choicesContainer, gameOverBanner);
+    gameOverBanner.remove();
+    document.querySelector(".round-num").textContent = "";
+    document.querySelector(".round-info").textContent = ""
+    displayScores();
 }
 
 //Event
