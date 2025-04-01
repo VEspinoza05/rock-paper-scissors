@@ -121,6 +121,8 @@ const choices = document.querySelectorAll(".choice");
 
 choices.forEach((c) => 
     c.addEventListener("click", () => {
+        if (roundCount === 5) return;
+        
         computerChoice = getComputerChoice();
         humanChoice = c.textContent.toLowerCase();
         roundResult = playRound(humanChoice, computerChoice);
