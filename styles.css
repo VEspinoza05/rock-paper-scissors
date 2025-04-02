@@ -18,15 +18,20 @@ body {
     justify-content: space-evenly;
     
 }
-.choice {
+.choice,
+.reset {
     font-size: 20px;
-    width: 100px;
-    height: 100px;
     background-color: antiquewhite;
     border: 2px solid black;
 }
 
-.choice:hover {
+.choice {
+    width: 100px;
+    height: 100px;
+}
+
+.choice:hover,
+.reset:hover {
     background-color: rgb(224, 211, 194);
 }
 
@@ -60,4 +65,15 @@ body {
 
 .round-info {
     font-size: 24px;
+}
+
+.game-over-banner {
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 20px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }

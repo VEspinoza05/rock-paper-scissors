@@ -119,6 +119,7 @@ function displayScores() {
 
 function createResetButton() {
     const resetButton = document.createElement("button");
+    resetButton.setAttribute("class","reset");
     resetButton.textContent = "Restart"
     resetButton.addEventListener("click", () => resetGame())
     return resetButton;
