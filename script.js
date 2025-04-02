@@ -6,6 +6,11 @@ let roundCount = 0;
 const gameUiContainer = document.querySelector(".game-ui");
 const choicesContainer = document.querySelector(".choices");
 const gameUiH2 = document.querySelector(".game-ui > h2");
+const roundCountContainer = document.querySelector(".round-num");
+const roundInfoContainer = document.querySelector(".round-info");
+const humanScoreContainer = document.querySelector(".human-score");
+const computerScoreContainer = document.querySelector(".computer-score");
+const resultsContainer = document.querySelector(".results");
 
 //functions
 function getFinalWinner() { 
@@ -100,21 +105,16 @@ function playRound(humanChoice, computerChoice){
 }
 
 function displayRoundInfo(roundResult) {
-    const roundInfoElement = document.querySelector(".round-info");
-    roundInfoElement.textContent = roundResult;
+    roundInfoContainer.textContent = roundResult;
 }
 
 function displayRoundCount(roundCount) {
-    const roundCountElement = document.querySelector(".round-num");
-    roundCountElement.textContent = "Round " + roundCount;
+    roundCountContainer.textContent = "Round " + roundCount;
 }
 
 function displayScores() {
-    const humanScoreElement = document.querySelector(".human-score");
-    const computerScoreElement = document.querySelector(".computer-score");
-
-    humanScoreElement.textContent = "Human: " + humanScore;
-    computerScoreElement.textContent = "Computer: " + computerScore;
+    humanScoreContainer.textContent = "Human: " + humanScore;
+    computerScoreContainer.textContent = "Computer: " + computerScore;
 }
 
 function createResetButton() {
@@ -135,8 +135,6 @@ function createGameOverBanner() {
 
 function displayGameOver() {
     const gameOverBanner = createGameOverBanner();
-    const resultsContainer = document.querySelector(".results");
-    const gameUiContainer = document.querySelector(".game-ui")
     gameUiContainer.insertBefore(gameOverBanner, resultsContainer);
 }
 
@@ -150,8 +148,8 @@ function setDefaultUi() {
     gameUiContainer.insertBefore(gameUiH2, gameOverBanner);
     gameUiContainer.insertBefore(choicesContainer, gameOverBanner);
     gameOverBanner.remove();
-    document.querySelector(".round-num").textContent = "";
-    document.querySelector(".round-info").textContent = ""
+    roundCountContainer.textContent = "";
+    roundInfoContainer.textContent = ""
     displayScores();
 }
 
