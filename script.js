@@ -19,16 +19,6 @@ function getFinalWinner() {
     else return "It's a draw.";
 }
 
-function playGame(){
-    const humanSelection = getHumanChoice();
-
-    if(humanSelection === "canceled" || 
-        humanSelection === "wrong choice") return humanSelection;
-
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-}
-
 function getComputerChoice() {
     const minNumber = 1;
     const maxNumber = 3;
@@ -44,24 +34,6 @@ function getComputerChoice() {
         case 3:
             return "scissors"
             break;
-    }
-}
-
-function getHumanChoice() {
-    let choice = prompt("Enter a choice: rock, paper or scissors","");
-
-    if(choice === null) return "canceled"
-
-    choice = choice.toLowerCase();
-
-    if(choice === "rock" ||
-        choice === "paper" ||
-        choice === "scissors") {
-        return choice;
-    }
-
-    else {
-        return "wrong choice";
     }
 }
 
